@@ -7,6 +7,7 @@ Description
 The utility uses the [CMU pronouncing dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) to map words to numbers using the [mnemonic major system](http://en.wikipedia.org/wiki/Mnemonic_major_system). Amaze your friends and family by easily memorizing numbers!
 
 When given a set of words, the utility outputs the corresponding mnemonic numbers:
+
     $ python mnemofy.py it was the best of times it was the worst of times
     # Words
     it 1
@@ -23,6 +24,7 @@ When given a set of words, the utility outputs the corresponding mnemonic number
     times 130
 
 When given a set of numbers, it will print all possible candidate words sorted by word frequencies in the training set:
+
     $ python mnemofy.py 90210 8675 309
     # Numbers
     90210 peasants
