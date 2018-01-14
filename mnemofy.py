@@ -35,7 +35,7 @@ phone_map = {
 
 def remove_digits(s):
     """Removes all digits from a string"""
-    return "".join([c for c in s if not str.isdigit(c)])
+    return "".join([c for c in s if not str.isdigit(str(c))])
 
 def mnemofy_word(word, words):
     """Converts all pronunciations of a word into numbers"""
@@ -91,12 +91,12 @@ def make_database(dbpath, corpora_words = None):
     cur.execute("CREATE TABLE words (id INTEGER PRIMARY KEY, word TEXT, freq INTEGER)")
 
     for w in words.keys():
-        if len(w) > 1 and all([str.isalpha(c) for c in w]):
+        if len(w) > 1 and all([str.isalpha(str(c)) for c in w]):
             cur.execute("INSERT INTO words (word, freq) VALUES (?, ?)", (w, word_freqs[w]))
 
     # Words => Numbers
     cur.execute("DROP TABLE IF EXISTS word_mnums")
-    cur.execute("CREATE TABLE word_mnums (id INTEGER PRIMARY KEY, word_id INTEGER, mnum INTEGER)")
+    cur.execute("CREATE TABLE word_mnums (id INTEGER PRIMARY KEY, word_id INTEGER, mnum TEXT)")
 
     # Make a list so we can reuse the cursor inside the loop
     rows = list(cur.execute("SELECT id, word from words"))
