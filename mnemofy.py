@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
         if re.match("^\\d+$", first_num_or_word):
             print "# Numbers"
-            numbers = [int(item) for item in args.nums_or_words]
+            numbers = [unicode(item) for item in args.nums_or_words]
             words_dict = get_words(cur, numbers)
 
             for number in numbers:
